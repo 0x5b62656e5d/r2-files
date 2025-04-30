@@ -1,0 +1,36 @@
+{
+  "name": "r2-files",
+  "version": "1.0.0",
+  "description": "A simple CLI tool to manage Cloudflare R2 buckets",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "bin": {
+    "r2-files": "./dist/app.js"
+  },
+  "keywords": [
+    "cloudflare",
+    "r2",
+    "cli",
+    "aws-sdk",
+    "typescript",
+    "cloud",
+    "s3"
+  ],
+  "author": "0x5b62656e5d",
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.799.0",
+    "@aws-sdk/lib-storage": "^3.799.0",
+    "clipboardy": "^4.0.0",
+    "dotenv": "^16.5.0",
+    "node-fetch": "^3.3.2",
+    "uuid": "^11.1.0"
+  }
+}
