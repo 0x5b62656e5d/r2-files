@@ -16,7 +16,7 @@ npm install -g @pepper/r2-files
 This tool requires a Cloudflare account, as well as an active Cloudflare R2 plan. API tokens can be created by heading 
 to Cloudflare's R2 Object Storage Overview page, then heading to the Manage API Tokens page.
 
-![doc/api-tokens-page.png](doc/api-tokens-page.png)
+![Cloudflare R2 API tokens page](https://cdn.pepper.fyi/r2-files/api-tokens-page.png)
 
 Create a token that has Object Read and Write permissions, and note down the Access Key ID, Secret Access Key, and the 
 Endpoint URL for S3 clients. Make sure you already have a bucket created to store files.
