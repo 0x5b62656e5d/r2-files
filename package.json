@@ -1,6 +1,6 @@
 {
   "name": "@0x5b62656e5d/r2-files",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple CLI tool to manage Cloudflare R2 buckets",
   "main": "app.js",
   "scripts": {
