@@ -1,6 +1,13 @@
 # r2-files
 
+![NPM Version](https://img.shields.io/npm/v/%400x5b62656e5d%2Fr2-files?style=for-the-badge&color=a062fc)
+
 A simple CLI tool to manage Cloudflare R2 buckets
+
+## Description
+
+This CLI tool helps manage files from a Cloudflare R2 bucket. It can download, upload, list, and delete files from the 
+specified bucket. It also automatically copies the link to download the file to the clipboard upon successful upload.
 
 ## Installation
 
