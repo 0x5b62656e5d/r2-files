@@ -6,7 +6,7 @@ A simple CLI tool to manage Cloudflare R2 buckets
 
 Install via npm
 ```bash
-npm install -g @pepper/r2-files
+npm install -g @0x5b62656e5d/r2-files
 ```
 
 ## Setup
