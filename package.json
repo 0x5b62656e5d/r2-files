@@ -3,6 +3,11 @@
   "version": "1.0.3",
   "description": "A simple CLI tool to manage Cloudflare R2 buckets",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0x5b62656e5d/r2-files.git"
+  },
+  "homepage": "https://github.com/0x5b62656e5d/r2-files",
   "scripts": {
     "build": "tsc"
   },
