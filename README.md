@@ -73,7 +73,7 @@ r2-files download somefile.txt ~/Downloads/text.txt
 
 Uploads `~/Downloads/folder/text.txt` as `text.txt`
 ```
-r2-files upload ~/Downloads/folder/text/txt text.txt
+r2-files upload ~/Downloads/folder/text.txt text.txt
 ```
 
 Deletes `text.txt` from the bucket
@@ -93,7 +93,13 @@ r2-files list
 
 ## Libraries used in this project:
 
+- [@semantic-release/changelog](https://www.npmjs.com/package/@semantic-release/changelog)
+- [@semantic-release/commit-analyzer](https://www.npmjs.com/package/@semantic-release/commit-analyzer)
+- [@semantic-release/git](https://www.npmjs.com/package/@semantic-release/git)
+- [@semantic-release/github](https://www.npmjs.com/package/@semantic-release/github)
+- [@semantic-release/release-notes-generator](https://www.npmjs.com/package/@semantic-release/release-notes-generator)
 - [@types/node](https://www.npmjs.com/package/@types/node)
+- [semantic-release](https://www.npmjs.com/package/semantic-release)
 - [typescript](https://www.npmjs.com/package/typescript)
 - [@aws-sdk/client-s3](https://www.npmjs.com/package/@aws-sdk/client-s3)
 - [@aws-sdk/lib-storage](https://www.npmjs.com/package/@aws-sdk/lib-storage)
