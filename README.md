@@ -1,6 +1,8 @@
 # r2-files
 
 ![NPM Version](https://img.shields.io/npm/v/%400x5b62656e5d%2Fr2-files?style=for-the-badge&color=a062fc)
+![NPM Downloads](https://img.shields.io/npm/d18m/%400x5b62656e5d%2Fr2-files?style=for-the-badge&color=a062fc)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/0x5b62656e5d/r2-files/release-publish.yml?style=for-the-badge&label=Ci%2FCD&color=a062fc)
 
 A simple CLI tool to manage Cloudflare R2 buckets
 
