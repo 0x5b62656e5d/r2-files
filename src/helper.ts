@@ -95,7 +95,7 @@ const listAllFiles = async (client: S3Client, bucket: string) => {
     }
 
     console.table(
-        ((await getAllFiles(client, bucket)) as R2Object[]).map(object => ({
+        listOfFiles.map(object => ({
             "File key": object.fileKey,
             "File name": object.fileName,
         }))
