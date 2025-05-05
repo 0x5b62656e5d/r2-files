@@ -3,8 +3,11 @@
 import { S3Client } from "@aws-sdk/client-s3";
 import { config as dotenv } from "dotenv";
 import path, { basename, extname } from "path";
-import { deleteAllFiles, deleteFile, downloadFile, listAllFiles, uploadFile } from "./helper.js";
 import { homedir } from "os";
+import { downloadFile } from "./download.js";
+import { uploadFile } from "./upload.js";
+import { deleteAllFiles, deleteFile } from "./delete.js";
+import { listAllFiles } from "./helper.js";
 
 dotenv({ path: path.join(homedir(), ".config", "r2-files", ".env") });
 
