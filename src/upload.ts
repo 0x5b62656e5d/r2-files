@@ -91,4 +91,4 @@ const upload = async (
     }
 };
 
-export { uploadFile };
+export { upload, uploadFile };
