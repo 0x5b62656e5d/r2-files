@@ -6,12 +6,14 @@ const config = {
     extensionsToTreatAsEsm: [".ts"],
     transform: {
         "^.+\\.tsx?$": ["ts-jest", { useESM: true }],
+        "^.+\\.js$": "babel-jest",
     },
+    transformIgnorePatterns: ["/node_modules/(?!(mime)/)"],
     moduleNameMapper: {
         "^(\\.{1,2}/.*)\\.js$": "$1",
     },
     testPathIgnorePatterns: ["<rootDir>/dist/"],
-    setupFilesAfterEnv: [ "<rootDir>/src/test/jest.setup.ts" ],
+    setupFilesAfterEnv: ["<rootDir>/src/test/jest.setup.ts"],
 };
 
 export default config;
