@@ -1,12 +1,10 @@
-import {
-    _Object,
-    S3Client,
-} from "@aws-sdk/client-s3";
+import { _Object, S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 import clipboard from "clipboardy";
 import { createReadStream } from "fs";
 import { v4 as uuidv4 } from "uuid";
 import { checkFileExists } from "./helper.js";
+import mime from "mime";
 
 /**
  * Prepares and uploads a file to the specified S3 bucket
@@ -71,11 +69,21 @@ const upload = async (
             Metadata: {
                 name: fileName,
             },
+            ContentType: mime.getType(fileName) || "application/octet-stream",
         },
     });
 
     upload.on("httpUploadProgress", progress => {
-        console.log(`Uploaded ${progress.loaded} of ${progress.total} bytes`);
+        process.stdout.clearLine(0);
+        process.stdout.cursorTo(0);
+
+        if (progress.loaded && progress.total) {
+            process.stdout.write(
+                `Uplaoded ${Math.round((progress.loaded / progress.total) * 10000) / 100}%`
+            );
+        } else {
+            process.stdout.write("Starting upload...");
+        }
     });
 
     try {
