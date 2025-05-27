@@ -32,13 +32,30 @@ jest.mock("fs", () => ({
     })),
 }));
 
+const mockStdout = {
+    write: jest.fn(),
+    isTTY: true,
+    clearLine: jest.fn(),
+    cursorTo: jest.fn(),
+};
+
+Object.defineProperty(process, "stdout", {
+    value: mockStdout,
+});
+
 beforeAll(() => {
     process.env.DOWNLOAD_URL = "https://example.com";
     jest.spyOn(process, "exit").mockImplementation();
+    jest.spyOn(process.stdout, "clearLine").mockImplementation(() => true);
+    jest.spyOn(process.stdout, "cursorTo").mockImplementation(() => true);
+    jest.spyOn(process.stdout, "write").mockImplementation(() => true);
 });
 
 afterAll(() => {
     (process.exit as unknown as jest.Mock).mockRestore();
+    (process.stdout.clearLine as unknown as jest.Mock).mockRestore();
+    (process.stdout.cursorTo as unknown as jest.Mock).mockRestore();
+    (process.stdout.write as unknown as jest.Mock).mockRestore();
 });
 
 afterEach(() => {

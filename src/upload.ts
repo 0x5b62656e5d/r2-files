@@ -79,7 +79,7 @@ const upload = async (
 
         if (progress.loaded && progress.total) {
             process.stdout.write(
-                `Uplaoded ${Math.round((progress.loaded / progress.total) * 10000) / 100}%`
+                `Uploaded ${Math.round((progress.loaded / progress.total) * 10000) / 100}%`
             );
         } else {
             process.stdout.write("Starting upload...");

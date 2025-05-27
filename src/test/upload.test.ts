@@ -25,14 +25,41 @@ describe("Upload file tests", () => {
         (Upload as unknown as jest.Mock).mockImplementation(() => uploadProgressMock);
 
         const consoleLogSpy = jest.spyOn(console, "log").mockImplementation();
-        
+        const stdoutWrite = jest.spyOn(process.stdout, "write").mockImplementation(() => true);
+
         await uploadFile(mockClient, "bucket", "path/to/file.txt", "file.txt", ".txt");
 
-        expect(uploadProgressMock.on).toHaveBeenCalledWith("httpUploadProgress", expect.any(Function));
-        expect(consoleLogSpy).toHaveBeenCalledWith("Uploaded 512 of 1024 bytes");
+        expect(uploadProgressMock.on).toHaveBeenCalledWith(
+            "httpUploadProgress",
+            expect.any(Function)
+        );
+        expect(stdoutWrite).toHaveBeenCalledWith("Uploaded 50%");
         expect(consoleLogSpy).toHaveBeenCalledWith(expect.stringContaining("Upload successful"));
     });
-    
+
+    test("Handles null progress values", async () => {
+        const uploadProgressMock = {
+            on: jest.fn((event, callback) => {
+                if (event === "httpUploadProgress") {
+                    callback({ loaded: null, total: 1024 });
+                }
+            }),
+            done: jest.fn().mockResolvedValueOnce({}),
+        };
+
+        (Upload as unknown as jest.Mock).mockImplementation(() => uploadProgressMock);
+
+        const stdoutWrite = jest.spyOn(process.stdout, "write").mockImplementation(() => true);
+
+        await uploadFile(mockClient, "bucket", "path/to/file.txt", "file.txt", ".txt");
+
+        expect(uploadProgressMock.on).toHaveBeenCalledWith(
+            "httpUploadProgress",
+            expect.any(Function)
+        );
+        expect(stdoutWrite).toHaveBeenCalledWith("Starting upload...");
+    });
+
     test("Uploads a file with a UUID key", async () => {
         await uploadFile(mockClient, "bucket", "path/to/file.txt", "file.txt", ".txt");
 
@@ -60,6 +87,7 @@ describe("Upload file tests", () => {
                 Metadata: {
                     name: "file.txt",
                 },
+                ContentType: "text/plain",
             },
         });
         expect(clipboard.writeSync).toHaveBeenCalledTimes(1);
